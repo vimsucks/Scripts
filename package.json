@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "mongoose": "^4.11.1",
+    "sequelize": "^4.2.1",
+    "sqlite3": "^3.1.8",
+    "superagent": "^3.5.2"
+  },
+  "name": "scripts",
+  "description": "",
+  "version": "1.0.0",
+  "main": "marx.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vimsucks/Scripts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vimsucks/Scripts/issues"
+  },
+  "homepage": "https://github.com/vimsucks/Scripts#readme"
+}
