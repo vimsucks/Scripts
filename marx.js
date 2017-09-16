@@ -9,14 +9,15 @@ mongoose.connect("mongodb://localhost/shuati")
 //})
 
 const QuestionSchema = new mongoose.Schema({
-    questionStr: String,
-    answer: String,
-    type: String,
-    optionA: String,
-    optionB: String,
-    optionC: String,
-    optionD: String,
-    unit: Number,
+    Id: Number,
+    QuestionStr: String,
+    Answer: String,
+    Type: String,
+    OptionA: String,
+    OptionB: String,
+    OptionC: String,
+    OptionD: String,
+    Unit: Number,
 })
 
 const classes = {
@@ -35,14 +36,15 @@ Object.keys(classes).forEach((key) => {
                 console.log(`${key} unit ${unit} has ${questions.length} questions`)
                 questions.forEach((question) => {
                     classes[key].model.create({
-                        answer: question.Answer,
-                        questionStr: question.QuestionStr,
-                        type: question.Mode,
-                        optionA: question.ChoosenA,
-                        optionB: question.ChoosenB,
-                        optionC: question.ChoosenC,
-                        optionD: question.ChoosenD,
-                        unit: question.Unit,
+                        Id: question.ID,
+                        Answer: question.Answer,
+                        QuestionStr: question.QuestionStr,
+                        Type: question.Mode,
+                        OptionA: question.ChoosenA,
+                        OptionB: question.ChoosenB,
+                        OptionC: question.ChoosenC,
+                        OptionD: question.ChoosenD,
+                        Unit: question.Unit,
                     }).then(() => {
                         console.log(++inserted+" inserted")
                     })

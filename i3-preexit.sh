@@ -2,3 +2,4 @@
 
 pkill xsel
 pkill clipmenud
+pkill fcitx

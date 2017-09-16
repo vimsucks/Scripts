@@ -50,7 +50,6 @@ if [ $hdmi_changged = true ] || [ $power_changged = true ]; then
 				fi
 			else
 				if [ "$1" ]; then
-					echo $1 fuck
 					if [ "$1" = "v" ];then
 						xrandr --output eDP1 --off --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate left
 					fi
@@ -64,15 +63,16 @@ if [ $hdmi_changged = true ] || [ $power_changged = true ]; then
 	else
 		xrandr --output eDP1 --primary --auto --output HDMI1 --off
 	fi
-	if [ "$1" ]; then
-		if [ "$1" = "v" ];then
+	#if [ "$1" ]; then
+		#if [ "$1" = "v" ];then
 			# feh --bg-scale ~/Pictures/WallPapers/vertical.jpg 2>&1
-			/home/vimsucks/Scripts/change-wallpaper.sh 2>&1
-		fi
-	else
+			#/home/vimsucks/Scripts/change-wallpaper.sh 2>&1
+		#fi
+	#else
 		#feh --bg-scale ~/Pictures/WallPapers/tml.png 2>&1
-		/home/vimsucks/Scripts/change-wallpaper.sh 2>&1
-	fi
+		#/home/vimsucks/Scripts/change-wallpaper.sh 2>&1
+	#fi
+    #feh --bg-scale ~/Pictures/How-to-Learn-Emacs-v2-Large.png
 	i3-msg restart
 	hdmi_changged=false
 	power_changged=false

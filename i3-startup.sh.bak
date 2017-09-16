@@ -16,35 +16,35 @@ fi
 
 
 open() {
-    nohup $@ >> /tmp/i3-startup.log&
+    nohup $1 & > /tmp/i3-startup.log
 }
 
-auto-randr.sh
-change-wallpaper.sh
+auto-randr.sh &
+change-wallpaper.sh &
 
-open fcitx-autostart
-open sogou-qimpanel
-open nm-applet
+nohup fcitx-autostart & 2>&1
+nohup sogou-qimpanel & 2>&1
+nohup nm-applet & 2>&1
 
 dropbox_pid=`pgrep dropbox`
 if [ "$dropbox_pid" ]; then
 	kill dropbox_pid
 fi
-open dropbox
+nohup dropbox & 2>&1
 
 kill `pgrep clipmenud`
-open clipmenud
+nohup clipmenud & 2>&1
 
 kill `pgrep udiskie`
-open udiskie
+nohup udiskie & 2>&1
 
 kill `pgrep dunst`
-open dunst -fn \"WenQuanYi Micro Hei\" -conf ~/.dunstrc
+nohup dunst -fn "WenQuanYi Micro Hei" -conf ~/.dunstrc & 2>&1
 #kill `pgrep xfce4-notifyd`
 #/usr/lib/xfce4/notifyd/xfce4-notifyd
 
 kill "`pgrep compton`"
-open "compton -b"
+nohup compton -b
 
 #kill `pgrep conky`
 #conky
