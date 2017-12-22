@@ -1,0 +1,18 @@
+#!/bin/bash
+if [ -z "$@" ]; then
+    echo "Please specific a docker..."
+    exit 1
+fi
+
+for container in "$@"; do
+    if [ ! -d "$HOME/Docker/$1" ]; then
+        echo "Docker not exists..."
+        exit 1
+    fi
+
+    if [ -z "$2" ]; then
+        docker-compose -f $HOME/Docker/$1/docker-compose.yml up -d
+    else
+        docker-compose -f $HOME/Docker/$1/docker-compose.yml $2
+    fi
+done

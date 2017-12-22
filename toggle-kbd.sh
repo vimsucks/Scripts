@@ -13,3 +13,5 @@ if [ "$key_id" ];then
     xinput set-prop $key_id "Device Enabled" 1
   fi
 fi
+
+pkill -RTMIN+9 i3blocks

@@ -1,0 +1,6 @@
+#!/bin/bash
+if pidof -o %PPID -x "$1">/dev/null; then
+	:
+else
+	($@ &)
+fi

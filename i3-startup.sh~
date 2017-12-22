@@ -1,12 +1,7 @@
 #!/bin/bash
-auto-randr.sh
-log="/tmp/i3-startup.log"
-
 open() {
-    nohup $@ >> $log &
+    nohup $@ >> /tmp/i3-startup.log&
 }
-
-echo "Startup in progess..."
 
 xrdb -load ~/.Xresources
 xset -b
@@ -27,43 +22,41 @@ if [ -n "$hhkb_connected" ]; then
   xinput set-prop "AT Translated Set 2 keyboard" "Device Enabled" 0
 fi
 
+open auto-randr.sh
 #change-wallpaper.sh
-#open bing-daily-wallpaper
+open bing-daily-wallpaper.py
 
 open fcitx-autostart
 open sogou-qimpanel
 open nm-applet
 
-pkill dropbox
+dropbox_pid=`pgrep dropbox`
+if [ "$dropbox_pid" ]; then
+	kill dropbox_pid
+fi
 open dropbox
 
-pkill udiskie
+kill `pgrep clipmenud`
+open clipmenud
+
+kill `pgrep udiskie`
 open udiskie
 
-pkill dunst
+kill `pgrep dunst`
 open dunst -fn \"WenQuanYi Micro Hei\" -conf ~/.dunstrc
 #kill `pgrep xfce4-notifyd`
 #/usr/lib/xfce4/notifyd/xfce4-notifyd
 
-pkill compton
-open compton -b
+kill "`pgrep compton`"
+open "compton -b"
 
-pkill copyq
-open copyq
-
-nohup termite -e "tmux attach" > /tmp/i3-startup.log&
-sleep 2 && i3-msg '[instance=termite]move scratchpad' > /tmp/fuck.log
+open termite -e "tmux attach" 
+sleep 1 && i3-msg '[instance=termite]move scratchpad' > /tmp/fuck.log
 
 #kill `pgrep conky`
 #conky
 
 #pkill `thunderbird`
 #thunderbird &
-open thunderbird
-open google-chrome-stable
-#open transmission-gtk
-open httphome.py
 
-open transmission-gtk
-
-open emacs --daemon
+[[ -z "`pgrep emacs`" ]] && emacs --daemon
